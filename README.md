@@ -70,6 +70,7 @@ AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
 > ⚠️ Be sure to include your auto-generated `thingProperties.h` file from Arduino IoT Cloud.
 
+```cpp
 #include "thingProperties.h"
 #include "DHT.h"
 
@@ -104,7 +105,7 @@ message = "Temperature = " + String(temperature) +
 
 Serial.println(message);
 }
-
+```
 ---
 
 ## Arduino-IoT-Cloud-Setup
