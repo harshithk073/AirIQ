@@ -8,20 +8,20 @@ Developed AirIQ, an intelligent air quality monitoring system using NodeMCU ESP8
 
 ## 📑 Table of Contents
 
-- [🔍 Overview](#-overview)
-- [🧰 Hardware Components](#-hardware-components)
-- [🔌 Wiring Diagram](#-wiring-diagram)
-- [💻 Software & Dependencies](#-software--dependencies)
-- [🧠 Code Example](#-code-example)
-- [☁️ Arduino IoT Cloud Setup](#-arduino-iot-cloud-setup)
-- [▶️ Usage Instructions](#-usage-instructions)
-- [📽️ Demo Video](#-demo-video)
-- [📊 Dashboard Screenshot](#-dashboard-screenshot)
-- [📝 License](#-license)
+- [Overview](#overview)
+- [Hardware Components](#hardware-components)
+- [Wiring Diagram](#wiring-diagram)
+- [Software--Dependencies](#software--dependencies)
+- [Code Example](#code-example)
+- [Arduino-IoT-Cloud-Setup](#arduino-iot-cloud-setup)
+- [Usage-Instructions](#usage-instructions)
+- [Demo-Video](#demo-video)
+- [Dashboard-Screenshot](#dashboard-screenshot)
+- [License](#license)
 
 ---
 
-## 🔍 Overview
+## Overview
 
 AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
@@ -32,7 +32,7 @@ AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
 ---
 
-## 🧰 Hardware Components
+## Hardware Components
 
 | Component                            | Quantity |
 |--------------------------------------|----------|
@@ -44,7 +44,7 @@ AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
 ---
 
-## 🔌 Wiring Diagram
+## Wiring Diagram
 
 ![Connection Diagram](connection-diagram.png)
 
@@ -56,7 +56,7 @@ AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
 ---
 
-## 💻 Software & Dependencies
+## Software--Dependencies
 
 - **IDE:** [Arduino IDE](https://www.arduino.cc/en/software)
 - **Board:** NodeMCU 1.0 (ESP-12E Module)
@@ -66,11 +66,10 @@ AirIQ is a real-time, cloud-connected air quality monitoring system designed to:
 
 ---
 
-## 🧠 Code Example
+## Code Example
 
 > ⚠️ Be sure to include your auto-generated `thingProperties.h` file from Arduino IoT Cloud.
 
-```cpp
 #include "thingProperties.h"
 #include "DHT.h"
 
@@ -80,33 +79,35 @@ DHT dht(DHTpin, DHTTYPE);
 int sensor = A0;
 
 void setup() {
-  Serial.begin(9600);
-  delay(1500);
-  initProperties();
-  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
-  setDebugMessageLevel(2);
-  ArduinoCloud.printDebugInfo();
+Serial.begin(9600);
+delay(1500);
+initProperties();
+ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+setDebugMessageLevel(2);
+ArduinoCloud.printDebugInfo();
 }
 
 void loop() {
-  ArduinoCloud.update();
+ArduinoCloud.update();
 
-  float hm = dht.readHumidity();
-  float temp = dht.readTemperature();
-  int airqualityvalue = analogRead(sensor);
+float hm = dht.readHumidity();
+float temp = dht.readTemperature();
+int airqualityvalue = analogRead(sensor);
 
-  humidity = hm;
-  temperature = temp;
-  airquality = airqualityvalue;
+humidity = hm;
+temperature = temp;
+airquality = airqualityvalue;
 
-  message = "Temperature = " + String(temperature) +
-            " Humidity = " + String(humidity) +
-            " Air Quality = " + String(airqualityvalue);
+message = "Temperature = " + String(temperature) +
+" Humidity = " + String(humidity) +
+" Air Quality = " + String(airqualityvalue);
 
-  Serial.println(message);
+Serial.println(message);
 }
-```
-## ☁️ Arduino IoT Cloud Setup
+
+---
+
+## Arduino-IoT-Cloud-Setup
 
 1. Go to [Arduino IoT Cloud](https://create.arduino.cc/cloud).
 2. Create a new **Thing** and add the following cloud variables:
@@ -119,7 +120,7 @@ void loop() {
 
 ---
 
-## ▶️ Usage Instructions
+## Usage-Instructions
 
 1. **Assemble** the hardware as shown in the wiring diagram.
 2. **Upload** the code via Arduino IDE (with `thingProperties.h` included).
@@ -128,15 +129,16 @@ void loop() {
 
 ---
 
-## 📽️ Demo Video
+## Demo-Video
 
 [![Demo Video](AirIQ-Dashboard.png)](AirIQ-DemoVid.mp4)
 
-> 🎥 Click the image to view the working demo. If on GitHub, the video may open or download depending on your browser.
+> 🎥 *Click the image to download or open the demo video (MP4 file).*  
+
 
 ---
 
-## 📊 Dashboard Screenshot
+## Dashboard-Screenshot
 
 ![Arduino IoT Cloud Dashboard](AirIQ-Dashboard.png)
 
@@ -144,7 +146,6 @@ void loop() {
 
 ---
 
-## 📝 License
+## License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
-
